@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../../utils/app_colors/app_colors.dart';
-import '../../../utils/app_icons/app_icons.dart';
 import '../../../utils/app_images/app_images.dart';
 import '../../../utils/app_string/app_string.dart';
 import '../../../widget/loading_widget/loading_widget.dart';

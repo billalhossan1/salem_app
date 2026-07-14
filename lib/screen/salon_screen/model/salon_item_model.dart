@@ -15,7 +15,7 @@ class SalonItemModel {
   final String email;
   final String activeStatus;
   final String description;
-  final String image;
+
   final String location;
   final String distance;
   final String service;
@@ -44,7 +44,6 @@ class SalonItemModel {
     required this.email,
     required this.activeStatus,
     required this.description,
-    required this.image,
     required this.location,
     required this.service,
     required this.openingTime,
@@ -73,7 +72,6 @@ class SalonItemModel {
       email: '',
       activeStatus: '',
       description: '',
-      image: '',
       location: '',
       service: '',
       openingTime: [],
@@ -105,7 +103,6 @@ class SalonItemModel {
       email: json['email']?.toString() ?? '',
       activeStatus: json['activeStatus']?.toString() ?? '',
       description: json['description']?.toString() ?? '',
-      image: json['image']?.toString() ?? '',
       location: json['location']?.toString() ?? '',
       service: json['service']?.toString() ?? '',
       openingTime:
@@ -143,7 +140,6 @@ class SalonItemModel {
       'email': email,
       'activeStatus': activeStatus,
       'description': description,
-      'image': image,
       'location': location,
       'service': service,
       'openingTime': openingTime.map((e) => e.toJson()).toList(),
@@ -160,11 +156,12 @@ class Admin {
   final String id;
   final String name;
   final String email;
+  final String image;
 
-  Admin({required this.id, required this.name, required this.email});
+  Admin({required this.id, required this.name, required this.email,required this.image});
 
   factory Admin.empty() {
-    return Admin(id: '', name: '', email: '');
+    return Admin(id: '', name: '', email: '',image: '');
   }
 
   factory Admin.fromJson(Map<String, dynamic> json) {
@@ -172,11 +169,12 @@ class Admin {
       id: json['_id']?.toString() ?? '',
       name: json['name']?.toString() ?? '',
       email: json['email']?.toString() ?? '',
+      image: json['image']?.toString() ?? '',
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {'_id': id, 'name': name, 'email': email};
+    return {'_id': id, 'name': name, 'email': email,'image': image};
   }
 }
 

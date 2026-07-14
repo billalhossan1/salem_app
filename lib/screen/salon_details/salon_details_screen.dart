@@ -29,6 +29,8 @@ class SalonDetailsScreen extends StatelessWidget {
 
         final salon = controller.salon.value;
 
+        print('salon image==================/${salon.admin.image}');
+
         return Column(
           children: [
             Expanded(
@@ -47,7 +49,7 @@ class SalonDetailsScreen extends StatelessWidget {
                             color: Colors.grey.shade200,
                           ),
                           child: CommonImage(
-                            src: salon.image,
+                            src: "/${salon.admin.image}",
                             fill: BoxFit.cover,
                           ),
                         ),
@@ -291,19 +293,19 @@ class SalonDetailsScreen extends StatelessWidget {
                             buttonColor: AppColor.screenBackgroundColor,
                             borderColor: AppColor.textColor,
                           ),
-                          16.height,
-                          controller.isConfirmVisitLoading.value
-                              ? LoadingWidget()
-                              : CommonButton(
-                                  buttonColor: Colors.white,
-                                  borderColor: Colors.black,
-                                  buttonWidth: double.infinity,
-                                  buttonRadius: 12.w,
-                                  titleText: "Visit".tr,
-                                  onTap: () {
-                                    controller.confirmVisit();
-                                  },
-                                ),
+                          // 16.height,
+                          // controller.isConfirmVisitLoading.value
+                          //     ? LoadingWidget()
+                          //     : CommonButton(
+                          //         buttonColor: Colors.white,
+                          //         borderColor: Colors.black,
+                          //         buttonWidth: double.infinity,
+                          //         buttonRadius: 12.w,
+                          //         titleText: "Visit".tr,
+                          //         onTap: () {
+                          //           controller.confirmVisit();
+                          //         },
+                          //       ),
                           24.height,
 
                           //! Active Points Banner (only when rewards available)

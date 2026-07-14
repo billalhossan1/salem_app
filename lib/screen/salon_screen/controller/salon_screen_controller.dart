@@ -14,6 +14,8 @@ class SalonScreenController extends GetxController {
   RxList<SalonItemModel> allSalonList = <SalonItemModel>[].obs;
   Rx<LatLong> currentLocation = LatLong(lat: 0, long: 0).obs;
 
+  bool _isFetching = false;
+
   void onSearch(String value) {
     debouncer.run(() {
       allSalonList.clear();
@@ -41,6 +43,10 @@ class SalonScreenController extends GetxController {
   }
 
   Future<void> getSalonList({int page = 1}) async {
+    // Prevent duplicate concurrent calls (e.g. SmartListLoader + _initial both firing)
+    if (_isFetching && page == 1) return;
+    _isFetching = true;
+
     currentLocation.value = LocationController.instance.currentLocation.value;
     page == 1 ? allSalonList.clear() : null;
     page == 1 ? isLoading.value = true : null;
@@ -64,6 +70,7 @@ class SalonScreenController extends GetxController {
       },
     );
     isLoading.value = false;
+    _isFetching = false;
 
     if (response.isSuccess) {
     } else {

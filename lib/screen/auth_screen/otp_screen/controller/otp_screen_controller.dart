@@ -48,8 +48,8 @@ class OtpScreenController extends GetxController {
         endpoint: ApiEndpoints.login,
         method: .POST,
         jsonBody: {
-          // "phoneNumber": "+971$phone",
-          "phoneNumber": "+8801868030247",
+          "phoneNumber": "+971$phone",
+          // "phoneNumber": "+8801868030247",
           "otp": otpCode.value,
         },
       ),

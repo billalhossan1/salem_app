@@ -22,14 +22,14 @@ class SalonScreen extends StatelessWidget {
       backgroundColor: AppColor.screenBackgroundColor,
       body: Column(
         children: [
-          _appbar(), _searchbar(),
+          _appbar(),
+          _searchbar(),
           10.height,
 
           Expanded(
             child: Obx(() {
-
               return SmartListLoader(
-                onRefresh: (){
+                onRefresh: () {
                   controller.getSalonList();
                 },
                 onLoadMore: (page) {
@@ -43,7 +43,7 @@ class SalonScreen extends StatelessWidget {
                   return Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.w),
                     child: SalonCard(
-                      imageAsset: "${ApiEndpoints.domain}${salon.image}",
+                      imageAsset: "${ApiEndpoints.domain}/${salon.admin.image}",
                       isNetworkImage: true,
                       salonName: salon.businessName,
                       distance: salon.distance,
@@ -51,8 +51,10 @@ class SalonScreen extends StatelessWidget {
                       statusText: salon.isRewardAvailable,
                       buttonText: "View Details".tr,
                       onButtonTap: () {
-                        Get.toNamed(AppRoute.salonDetailsScreen,
-                            arguments: {'salonId': salon.id});
+                        Get.toNamed(
+                          AppRoute.salonDetailsScreen,
+                          arguments: {'salonId': salon.id},
+                        );
                       },
                     ),
                   );
@@ -75,7 +77,7 @@ class SalonScreen extends StatelessWidget {
         prefixIcon: SvgPicture.asset(AppIcons.searchIcons),
         backgroundColor: AppColor.screenBackgroundColor,
         hintText: "Search".tr,
-        onChanged: (val){
+        onChanged: (val) {
           controller.onSearch(val);
         },
         borderColor: AppColor.textColor.withValues(alpha: 0.2),
@@ -88,9 +90,7 @@ class SalonScreen extends StatelessWidget {
       title: "Salons".tr,
       leadingType: LeadingType.logo,
       centerTitle: true,
-      actions: [
-       NotificationWidget()
-      ],
+      actions: [NotificationWidget()],
     );
   }
 }

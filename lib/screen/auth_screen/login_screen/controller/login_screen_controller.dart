@@ -55,8 +55,8 @@ class LoginScreenController extends GetxController {
         // endpoint: "/auth/login",
         method: RequestMethod.POST,
         jsonBody: {
-          "phoneNumber": "+8801868030247",
-          // "phoneNumber": countryCode + phoneNumberController.text.trim(),
+          // "phoneNumber": "+8801868030247",
+          "phoneNumber": countryCode + phoneNumberController.text.trim(),
           if (referralCode.value.isNotEmpty) "referralCode": referralCode.value,
         },
       ),

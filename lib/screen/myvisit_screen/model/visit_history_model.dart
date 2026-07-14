@@ -4,10 +4,12 @@ class RewardHistoryModel {
   final String rewardId;
   final String lastView;
   final String salonName;
-  final String serviceType;
+  final String serviceName;
   final String location;
   final int totalPoint;
   final String status;
+  final int everyVisitCoins;
+  final List<String> services;
 
   const RewardHistoryModel({
     this.user = '',
@@ -18,7 +20,9 @@ class RewardHistoryModel {
     this.location = '',
     this.totalPoint = 0,
     this.status = '',
-    this.serviceType = '',
+    this.serviceName = '',
+    this.everyVisitCoins = 0,
+    this.services = const [],
   });
 
   factory RewardHistoryModel.fromJson(Map<String, dynamic> json) {
@@ -31,7 +35,11 @@ class RewardHistoryModel {
       location: json['location'] ?? '',
       totalPoint: json['totalPoint'] ?? 0,
       status: json['status'] ?? '',
-      serviceType: json['serviceType'] ?? '',
+      serviceName: json['serviceName'] ?? '',
+      everyVisitCoins: json['everyVisitCoins'] ?? 0,
+      services: json['services'] == null
+          ? []
+          : List<String>.from(json['services']!.map((x) => x)),
     );
   }
 
@@ -45,6 +53,8 @@ class RewardHistoryModel {
       'location': location,
       'totalPoint': totalPoint,
       'status': status,
+      'everyVisitCoins': everyVisitCoins,
+      'services': List<dynamic>.from(services.map((x) => x)),
     };
   }
 
@@ -57,6 +67,8 @@ class RewardHistoryModel {
     String? location,
     int? totalPoint,
     String? status,
+    int? everyVisitCoins,
+    List<String>? services,
   }) {
     return RewardHistoryModel(
       user: user ?? this.user,
@@ -67,6 +79,8 @@ class RewardHistoryModel {
       location: location ?? this.location,
       totalPoint: totalPoint ?? this.totalPoint,
       status: status ?? this.status,
+      everyVisitCoins: everyVisitCoins ?? this.everyVisitCoins,
+      services: services?? this.services
     );
   }
 }

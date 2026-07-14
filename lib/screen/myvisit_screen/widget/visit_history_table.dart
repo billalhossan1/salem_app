@@ -137,7 +137,9 @@ class _VisitRow extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Text(
-                  item.serviceType.isNotEmpty ? item.serviceType : '—',
+                  item.services.isNotEmpty
+                      ? "${item.services.first} ${item.services.length > 1 ? "+${item.services.length - 1}" : ""}"
+                      : '—',
                   style: const TextStyle(
                     fontSize: 12,
                     color: Color(0xFF6E6E6E),
@@ -163,7 +165,7 @@ class _VisitRow extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Text(
-                  '${item.totalPoint} PTS'.tr,
+                  '${item.everyVisitCoins} PTS'.tr,
                   style: TextStyle(
                     fontSize: 12,
                     color: AppColor.successColor,

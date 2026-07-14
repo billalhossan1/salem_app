@@ -163,6 +163,8 @@ class MyvisitScreenController extends GetxController {
   void onUserRewardsRefresh() {
     isUserRewardsLoadDone.value = false;
     userRewardsList.clear();
+    rewardHistoryList.clear();
+    getAllVisit(1);
     getUserRewards(1);
   }
 
