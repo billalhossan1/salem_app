@@ -71,7 +71,10 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
 
         scaffoldBackgroundColor: AppColor.screenBackgroundColor,
-        appBarTheme: AppBarTheme(surfaceTintColor: Colors.white,centerTitle: true,),
+        appBarTheme: AppBarTheme(
+          surfaceTintColor: Colors.white,
+          centerTitle: true,
+        ),
         colorScheme: ColorScheme.fromSeed(
           seedColor: AppColor.whiteColor,
           primary: AppColor.primaryColor, // button
@@ -189,3 +192,4 @@ class AppBackButton extends StatelessWidget {
     );
   }
 }
+
